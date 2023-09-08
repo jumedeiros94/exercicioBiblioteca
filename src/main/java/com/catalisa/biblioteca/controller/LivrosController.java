@@ -32,19 +32,15 @@ LivrosService livrosService;
         return livrosService.cadastrar(livrosModel);
     }
 
-
     @PutMapping(path = "/registro/{id}")
     public LivrosModel alteraContato(@PathVariable Long id, @RequestBody LivrosModel livrosModel){
         return livrosService.alterar(id, livrosModel);
     }
 
-
-
     @DeleteMapping(path = "/registro/{id}")
     public void deletaContato(@PathVariable Long id){
         livrosService.deletar(id);
     }
-
-}
+    }
 
 
