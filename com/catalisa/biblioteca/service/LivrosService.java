@@ -19,19 +19,19 @@ LivrosRepository livrosRepository;
     }
 
 
-    // método que busca um contato pelo id
+    // método que busca um livro pelo id
     public Optional<LivrosModel> buscarPorId(Long id) {
         return livrosRepository.findById(id);
     }
 
 
-    // método que cadastra um novo contato no banco
+    // método que cadastra um novo livro no banco
     public LivrosModel cadastrar(LivrosModel livrosModel) {
         return livrosRepository.save(livrosModel);
     }
 
 
-    // método para alterar um contato já existente
+    // método para alterar um livro já existente
     public LivrosModel alterar(Long id, LivrosModel livrosModel) {
         LivrosModel registro = buscarPorId(id).get();
 
