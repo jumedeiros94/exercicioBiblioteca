@@ -3,6 +3,7 @@ package com.catalisa.biblioteca.controller;
 import com.catalisa.biblioteca.dto.UsuarioDto;
 import com.catalisa.biblioteca.model.UsuarioModel;
 import com.catalisa.biblioteca.service.UsuarioService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,7 @@ public class UsuarioController {
 
     @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
     @GetMapping
+    @Operation(summary = " : Lista todos os usuários", method = "GET")
     public ResponseEntity<List<UsuarioDto>> listarUsuarios() {
        List<UsuarioModel> usuarios = usuarioService.listarTodosUsuarios();
         List<UsuarioDto> usuariosResponseDto = usuarios.stream()
@@ -32,6 +34,7 @@ public class UsuarioController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping
+    @Operation(summary = " : Cadastra um novo usuário", method = "GET")
     public ResponseEntity<?> criarUsuario(@RequestBody UsuarioDto usuarioDTO) {
         try {
             UsuarioModel usuarioCriado = usuarioService.criarNovoUsuario(usuarioDTO);
@@ -45,6 +48,7 @@ public class UsuarioController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/{userId}")
+    @Operation(summary = " : Deleta um usuário", method = "GET")
     public ResponseEntity<?> deletarUsuario(@PathVariable Long userId) {
         try {
             usuarioService.deletarUsuario(userId);
